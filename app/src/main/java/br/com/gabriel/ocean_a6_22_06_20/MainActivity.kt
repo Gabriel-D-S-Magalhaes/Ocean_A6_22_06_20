@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val language = etLinguagem.text
         if (language.isBlank()) {
             etLinguagem.error = "Digite uma linguagem..."
-            return;
+            return
         }
 
         textView.text = "Carregando..."
@@ -44,17 +44,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(
-                call: Call<GitHubRepositoriesResult>,
-                response: Response<GitHubRepositoriesResult>
+                call: Call<GitHubRepositoriesResult>, response: Response<GitHubRepositoriesResult>
             ) {
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    body?.items?.let { repositories ->
-                        textView.text = ""
-
-                        repositories.forEach {
-                            textView.append(it.full_name)
-                        }
+                if (response.isSuccessful) response.body()?.items?.let { repositories ->
+                    textView.text = ""
+                    repositories.forEach {
+                        textView.append(it.full_name)
                     }
                 }
             }

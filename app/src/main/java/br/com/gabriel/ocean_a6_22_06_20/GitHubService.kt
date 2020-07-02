@@ -6,11 +6,9 @@ import retrofit2.http.Query
 
 /**
  * Created by Gabriel Magalhaes on 24/06/2020.
- * @author Paulo Salvatore
+ * @author Gabriel dos S. Magalhães
  */
 interface GitHubService {
     @GET("search/repositories")
-    fun searchRepositories(
-        @Query("q") query: String
-    ): Call<GitHubRepositoriesResult>
+    fun searchRepositories(@Query("q") query: String): Call<GitHubRepositoriesResult>
 }
